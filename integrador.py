@@ -3,10 +3,12 @@ def agregar_producto(inventario):
     precio = float(input("Precio: "))
     cantidad = int(input("Cantidad: "))
     # TODO: Crear el diccionario del producto y agregarlo a la lista
-    inventario[nombre]= {
+    producto = {
+        "nombre": nombre,
         "precio": precio,
         "cantidad": cantidad
     }
+    inventario.append(producto)
     pass
 
 def mostrar_inventario(inventario):
