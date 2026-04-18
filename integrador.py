@@ -18,6 +18,8 @@ def mostrar_inventario(inventario):
     print(f"{'Nombre':<20} {'Precio':>10} {'Cantidad':>10}")
     print("-" * 42)
     # TODO: Recorrer el inventario e imprimir cada producto
+    for producto in inventario:
+        print(f"{producto['nombre']:<20} {producto['precio']:>10.2f} {producto['cantidad']:>10}")
     pass
 
 def buscar_producto(inventario, nombre):
