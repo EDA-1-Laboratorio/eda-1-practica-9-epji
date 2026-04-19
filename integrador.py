@@ -24,7 +24,11 @@ def mostrar_inventario(inventario):
 
 def buscar_producto(inventario, nombre):
     # TODO: Buscar y retornar el producto cuyo nombre coincida
+    for producto in inventario:
+        if producto["nombre"].lower == nombre.lower:
+            return producto
     # Retornar None si no se encuentra
+    return None
     pass
 
 def actualizar_cantidad(inventario):
