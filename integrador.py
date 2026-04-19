@@ -37,6 +37,7 @@ def actualizar_cantidad(inventario):
     if producto:
         nueva_cantidad = int(input("Nueva cantidad: "))
         # TODO: Actualizar la cantidad del producto
+        producto["cantidad"] = nueva_cantidad
         pass
     else:
         print("Producto no encontrado.")
