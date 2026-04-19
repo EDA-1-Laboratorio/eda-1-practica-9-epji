@@ -25,7 +25,7 @@ def mostrar_inventario(inventario):
 def buscar_producto(inventario, nombre):
     # TODO: Buscar y retornar el producto cuyo nombre coincida
     for producto in inventario:
-        if producto["nombre"].lower == nombre.lower:
+        if producto["nombre"].lower() == nombre.lower():
             return producto
     # Retornar None si no se encuentra
     return None
@@ -64,7 +64,6 @@ def resumen(inventario):
     lista_precios = []
     valorTotal_productos = 0
     for producto in inventario:
-        total_productos = producto + 1
         valorTotal_productos = valorTotal_productos + (producto["precio"] * producto["cantidad"])
         lista_precios.append(producto["precio"])
         
@@ -74,7 +73,7 @@ def resumen(inventario):
         if producto["precio"] == min(lista_precios):
             producto_mas_barato = producto["nombre"]
         
-    print(f"Total de productos distintos: {total_productos}")
+    print(f"Total de productos distintos: {len(inventario)}")
     print(f"Valor total de los productos: {valorTotal_productos}")
     print(f"Producto más caro: {producto_mas_caro}")
     print(f"Producto más barato: {producto_mas_barato}")
