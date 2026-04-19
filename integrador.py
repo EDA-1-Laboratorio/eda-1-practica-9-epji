@@ -46,6 +46,11 @@ def eliminar_producto(inventario):
     nombre = input("Nombre del producto a eliminar: ")
     # TODO: Buscar el producto y eliminarlo de la lista
     # Pista: usa inventario.remove(producto)
+    producto = buscar_producto(inventario, nombre)
+    if producto:
+        inventario.remove(producto)
+    else:
+        print("Producto no encontrado.")
     pass
 
 def resumen(inventario):
