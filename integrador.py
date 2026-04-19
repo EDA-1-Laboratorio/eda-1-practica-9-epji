@@ -61,6 +61,18 @@ def resumen(inventario):
     # - Total de productos distintos
     # - Valor total (sum de precio * cantidad)
     # - Producto más caro y más barato
+    lista_precios = []
+    for producto in inventario:
+        total_productos = producto + 1
+        valorTotal_producto = producto["precio"] * producto["cantidad"]
+        lista_precios.append(producto["precio"])
+        
+        if producto["precio"] == max(lista_precios):
+            producto_mas_caro = producto["nombre"]
+        
+        if producto["precio"] == min(lista_precios):
+            producto_mas_barato = producto["nombre"]
+    print(f"Total de productos distintos: {}")
     pass
 
 def menu():
