@@ -3,6 +3,12 @@ def agregar_producto(inventario):
     precio = float(input("Precio: "))
     cantidad = int(input("Cantidad: "))
     # TODO: Crear el diccionario del producto y agregarlo a la lista
+    producto = {
+        "nombre": nombre,
+        "precio": precio,
+        "cantidad": cantidad
+    }
+    inventario.append(producto)
     pass
 
 def mostrar_inventario(inventario):
@@ -12,11 +18,17 @@ def mostrar_inventario(inventario):
     print(f"{'Nombre':<20} {'Precio':>10} {'Cantidad':>10}")
     print("-" * 42)
     # TODO: Recorrer el inventario e imprimir cada producto
+    for producto in inventario:
+        print(f"{producto['nombre']:<20} {producto['precio']:>10.2f} {producto['cantidad']:>10}")
     pass
 
 def buscar_producto(inventario, nombre):
     # TODO: Buscar y retornar el producto cuyo nombre coincida
+    for producto in inventario:
+        if producto["nombre"].lower() == nombre.lower():
+            return producto
     # Retornar None si no se encuentra
+    return None
     pass
 
 def actualizar_cantidad(inventario):
@@ -25,6 +37,7 @@ def actualizar_cantidad(inventario):
     if producto:
         nueva_cantidad = int(input("Nueva cantidad: "))
         # TODO: Actualizar la cantidad del producto
+        producto["cantidad"] = nueva_cantidad
         pass
     else:
         print("Producto no encontrado.")
@@ -33,6 +46,11 @@ def eliminar_producto(inventario):
     nombre = input("Nombre del producto a eliminar: ")
     # TODO: Buscar el producto y eliminarlo de la lista
     # Pista: usa inventario.remove(producto)
+    producto = buscar_producto(inventario, nombre)
+    if producto:
+        inventario.remove(producto)
+    else:
+        print("Producto no encontrado.")
     pass
 
 def resumen(inventario):
@@ -43,6 +61,22 @@ def resumen(inventario):
     # - Total de productos distintos
     # - Valor total (sum de precio * cantidad)
     # - Producto más caro y más barato
+    lista_precios = []
+    valorTotal_productos = 0
+    for producto in inventario:
+        valorTotal_productos = valorTotal_productos + (producto["precio"] * producto["cantidad"])
+        lista_precios.append(producto["precio"])
+        
+        if producto["precio"] == max(lista_precios):
+            producto_mas_caro = producto["nombre"]
+        
+        if producto["precio"] == min(lista_precios):
+            producto_mas_barato = producto["nombre"]
+        
+    print(f"Total de productos distintos: {len(inventario)}")
+    print(f"Valor total de los productos: {valorTotal_productos}")
+    print(f"Producto más caro: {producto_mas_caro}")
+    print(f"Producto más barato: {producto_mas_barato}")
     pass
 
 def menu():
